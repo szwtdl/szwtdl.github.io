@@ -4,6 +4,9 @@
     --main-color: #1bd629;
     --main-width: 1200px;
 }
+.mb-top{
+    display: none;
+}
 header{
     position: fixed;
     top: 0;
