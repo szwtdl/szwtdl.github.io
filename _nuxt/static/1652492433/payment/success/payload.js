@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/payment/success", {data:[{}],fetch:{},mutations:[]});
