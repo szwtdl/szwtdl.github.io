@@ -1,0 +1,73 @@
+:root {
+    --primary-color: #000;
+    --secondary-color: #fff;
+    --main-color: #1bd629;
+    --main-width: 1200px;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 999;
+    background-color: var(--secondary-color);
+}
+header .top {
+    width: var(--main-width);
+    margin: 0 auto;
+    padding: 10px 0;
+}
+header .top .logo{
+    width: 145px;
+    height: 48px;
+    float: left;
+}
+header .top .logo img{
+    width: 100%;
+    height: 100%;
+}
+header .top .top-nav{
+    float: right;
+    height: 48px;
+    line-height: 48px;
+    margin-left: 30px;
+    text-align: left;
+}
+header .top .top-nav a{
+    display: inline-block;
+    font-size: 14px;
+    padding: 0 10px;
+    color: var(--primary-color);
+}
+header .top ul{
+    float: left;
+    height: 48px;
+    line-height: 48px;
+    margin-left: 30px;
+    text-align: left;
+}
+header .top ul li{
+    display: block;
+    float: left;
+    padding: 0 20px;
+}
+header .top ul li:hover a{
+    color: var(--main-color);
+}
+header .top ul li a{
+    display: block;
+    font-size: 18px;
+    padding: 0 10px;
+    color: var(--primary-color);
+}
+.banner{
+    width: 100%;
+    height: 800px;
+    background: linear-gradient(90deg, #5b5959 0%, #000 100%);
+}
+.banner ul li{
+    display: block;
+    float: left;
+    padding: 0 20px;
+}
