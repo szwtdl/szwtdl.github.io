@@ -1,1 +1,812 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>企业数字化与软件定制开发 | 技术工坊</title><meta name="description" content="独立开发者与系统架构师，提供企业管理系统、SaaS、在线教育与系统集成开发服务。"><link rel="canonical" href="https://szwtdl.github.io/"><meta property="og:title" content="企业数字化与软件定制开发"><meta property="og:description" content="独立开发者与系统架构师，提供企业管理系统、SaaS、在线教育与系统集成开发服务。"><meta property="og:url" content="https://szwtdl.github.io/"><meta property="og:type" content="website"><link rel="stylesheet" href="/assets/portfolio.css"></head><body><nav><strong><a href="/">技术工坊</a></strong><a href="/#cases">项目案例</a><a href="/#services">开发服务</a><a href="/#about">关于我</a><a href="/#contact">项目咨询</a></nav><main><section class="hero"><small>独立开发者 · 系统架构师</small><h1>让软件真正解决<br>企业业务问题</h1><p>企业管理系统、财务 SaaS、在线教育、移动应用与 API 集成。</p><a class="cta" href="#contact">咨询项目</a></section><section id="cases"><h2>代表项目</h2><div class="grid"><article class="card"><h3><a href="/cases/exam.html">在线刷题与题库系统</a></h3><p>面向职业资格培训与在线练习，围绕题库组织、考点分类、练习与复习展开。</p><a href="/cases/exam.html">查看案例 →</a></article><article class="card"><h3><a href="/cases/finance.html">企业财务 SaaS</a></h3><p>围绕企业账套、凭证、报表及财税业务协同建设。</p><a href="/cases/finance.html">查看案例 →</a></article><article class="card"><h3><a href="/cases/retail.html">门店管理系统（开发中）</a></h3><p>面向门店数字化管理的自研项目，尚未正式发布。</p><a href="/cases/retail.html">查看案例 →</a></article><article class="card"><h3><a href="/cases/academy.html">知行学院</a></h3><p>采用 Markdown、VitePress 和 GitHub Pages 的开放学习网站。</p><a href="/cases/academy.html">查看案例 →</a></article></div></section><section id="services"><h2>开发服务</h2><div class="grid"><article class="card"><h3>企业管理与 SaaS</h3><p>按业务需求评估范围、架构与交付计划。</p></article><article class="card"><h3>在线教育与题库</h3><p>按业务需求评估范围、架构与交付计划。</p></article><article class="card"><h3>小程序与移动应用</h3><p>按业务需求评估范围、架构与交付计划。</p></article><article class="card"><h3>API 与业务系统集成</h3><p>按业务需求评估范围、架构与交付计划。</p></article></div></section><section id="about"><h2>关于我</h2><p>以独立开发者和系统架构师身份提供需求分析、架构设计、开发与部署服务。</p></section><section id="contact"><h2>项目咨询</h2><p>欢迎提供业务需求、预算范围及预期上线时间。</p><a class="cta" href="mailto:szpengjian@gmail.com">邮件咨询</a><p>微信：pengjianplus</p><p><a href="https://github.com/szwtdl">GitHub</a></p></section></main><footer>技术工坊 · 独立开发与系统架构服务</footer></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术工坊 - 专业外包开发服务</title>
+<meta name="description" content="技术工坊：企业数字化、软件定制、财务SaaS与在线教育系统开发。"><link rel="canonical" href="https://szwtdl.github.io/">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        accent: '#722ED1',
+                        dark: '#1D2129',
+                        light: '#F2F3F5'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .hover-lift {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .hover-lift:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-inter bg-white text-dark">
+<!-- 导航栏 -->
+<header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/95 shadow-sm">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                    <i class="fa fa-code text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-dark">技术工坊</span>
+            </a>
+
+            <!-- 桌面导航 -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#services" class="text-dark hover:text-primary transition-custom">服务</a>
+                <a href="#technologies" class="text-dark hover:text-primary transition-custom">技术栈</a>
+                <a href="#cases" class="text-dark hover:text-primary transition-custom">案例</a>
+                
+                <a href="#contact" class="text-dark hover:text-primary transition-custom">联系我们</a>
+            </nav>
+
+            <!-- 联系按钮 -->
+            <a href="#contact" class="hidden md:block bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg transition-custom">
+                获取报价
+            </a>
+
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-dark focus:outline-none">
+                <i class="fa fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 移动端导航菜单 -->
+    <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+        <div class="container mx-auto px-4 py-3 space-y-3">
+            <a href="#services" class="block py-2 text-dark hover:text-primary transition-custom">服务</a>
+            <a href="#technologies" class="block py-2 text-dark hover:text-primary transition-custom">技术栈</a>
+            <a href="#cases" class="block py-2 text-dark hover:text-primary transition-custom">案例</a>
+            
+            <a href="#contact" class="block py-2 text-dark hover:text-primary transition-custom">联系我们</a>
+            <a href="#contact" class="block bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-center transition-custom">
+                获取报价
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-light to-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-dark mb-6">
+                        专业技术外包<br>
+                        <span class="text-primary">一站式开发服务</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-xl">
+                        从App开发到物联网解决方案，我们提供全方位技术外包服务，
+                        用专业技术助力您的业务增长。
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contact" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-medium text-center transition-custom">
+                            咨询项目
+                        </a>
+                        <a href="#services" class="border border-primary text-primary hover:bg-primary/5 px-8 py-3 rounded-lg font-medium text-center transition-custom">
+                            了解服务
+                        </a>
+                    </div>
+
+                    
+                </div>
+
+                <div class="lg:w-1/2 relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl hover-lift">
+                        <img src="https://picsum.photos/800/600?random=1" alt="技术开发团队合作场景" class="w-full h-auto">
+                    </div>
+                    <!-- 装饰元素 -->
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
+                    <div class="absolute -top-6 -right-6 w-40 h-40 bg-accent/20 rounded-full -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务概览 -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">我们的专业服务</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    提供全方位的技术开发服务，满足您不同阶段的业务需求，
+                    从概念到部署，我们全程保驾护航。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 服务卡片 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover-lift border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-mobile text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">App开发</h3>
+                    <p class="text-gray-600 mb-4">
+                        专业的移动应用开发，包括iOS和Android平台，
+                        支持原生开发和跨平台解决方案。
+                    </p>
+                    <ul class="text-gray-600 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>Uniapp开发</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>Flutter开发</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>安卓原生开发</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>iOS Swift开发</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-custom">
+                        了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- 服务卡片 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover-lift border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-wechat text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">小程序开发</h3>
+                    <p class="text-gray-600 mb-4">
+                        开发各类小程序，包括微信、支付宝、百度等平台，
+                        打造轻量级高效的用户体验。
+                    </p>
+                    <ul class="text-gray-600 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>微信小程序</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>支付宝小程序</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>多端适配</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>小程序推广</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-custom">
+                        了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- 服务卡片 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover-lift border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-globe text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">网站开发</h3>
+                    <p class="text-gray-600 mb-4">
+                        从企业官网到复杂的Web应用，提供响应式设计和高性能的网站解决方案。
+                    </p>
+                    <ul class="text-gray-600 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>企业官网</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>电商网站</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>管理系统</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>响应式设计</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-custom">
+                        了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- 服务卡片 4 -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover-lift border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-wifi text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">物联网开发</h3>
+                    <p class="text-gray-600 mb-4">
+                        连接智能设备，开发物联网解决方案，实现设备互联互通和数据管理。
+                    </p>
+                    <ul class="text-gray-600 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>设备连接</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>数据平台</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>远程控制</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-secondary mr-2"></i>
+                            <span>数据分析</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-custom">
+                        了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术栈展示 -->
+    <section id="technologies" class="py-20 bg-light">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">我们的技术栈</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    我们掌握多种编程语言和开发框架，能够根据项目需求选择最适合的技术方案，
+                    确保项目高效开发和稳定运行。
+                </p>
+            </div>
+
+            <!-- 编程语言 -->
+            <div class="mb-16">
+                <h3 class="text-xl font-semibold mb-8 text-center">编程语言</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                    <!-- 语言卡片 -->
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-code text-blue-500"></i>
+                        </div>
+                        <h4 class="font-semibold">PHP</h4>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-python text-blue-400"></i>
+                        </div>
+                        <h4 class="font-semibold">Python</h4>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-coffee text-orange-600"></i>
+                        </div>
+                        <h4 class="font-semibold">Java</h4>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-bolt text-blue-700"></i>
+                        </div>
+                        <h4 class="font-semibold">Go</h4>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-html5 text-orange-500"></i>
+                        </div>
+                        <h4 class="font-semibold">JavaScript</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 前端框架 -->
+            <div>
+                <h3 class="text-xl font-semibold mb-8 text-center">前端框架</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    <!-- 框架卡片 -->
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-code-fork text-orange-400"></i>
+                        </div>
+                        <h4 class="font-semibold">jQuery</h4>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-cubes text-green-500"></i>
+                        </div>
+                        <h4 class="font-semibold">Vue</h4>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-react text-blue-400"></i>
+                        </div>
+                        <h4 class="font-semibold">React</h4>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-mobile text-purple-500"></i>
+                        </div>
+                        <h4 class="font-semibold">Uniapp</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App开发技术 -->
+            <div class="mt-16">
+                <h3 class="text-xl font-semibold mb-8 text-center">App开发技术</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6">
+                    <!-- App技术卡片 -->
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-leaf text-blue-500"></i>
+                        </div>
+                        <h4 class="font-semibold">Flutter</h4>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-android text-green-600"></i>
+                        </div>
+                        <h4 class="font-semibold">安卓原生</h4>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-md hover-lift">
+                        <div class="text-4xl mb-3">
+                            <i class="fa fa-apple text-gray-800"></i>
+                        </div>
+                        <h4 class="font-semibold">iOS Swift</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作流程 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">我们的工作流程</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    标准化的开发流程，确保项目高效推进，按时交付，
+                    全程透明可控，让您随时了解项目进展。
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- 连接线 -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 transform -translate-x-1/2"></div>
+
+                <div class="space-y-12 md:space-y-0 relative">
+                    <!-- 步骤1 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0 md:order-1">
+                            <h3 class="text-xl font-semibold mb-2">需求沟通</h3>
+                            <p class="text-gray-600">
+                                深入了解您的业务需求和项目目标，
+                                提供专业的技术建议，确定项目范围和时间线。
+                            </p>
+                        </div>
+
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center z-10 mb-6 md:mb-0">
+                            <span class="font-bold">1</span>
+                        </div>
+
+                        <div class="md:w-1/2 md:pl-12 md:order-2"></div>
+                    </div>
+
+                    <!-- 步骤2 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0 md:order-1 hidden md:block"></div>
+
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center z-10 mb-6 md:mb-0">
+                            <span class="font-bold">2</span>
+                        </div>
+
+                        <div class="md:w-1/2 md:pl-12 md:order-2">
+                            <h3 class="text-xl font-semibold mb-2">方案设计</h3>
+                            <p class="text-gray-600">
+                                根据需求制定详细的技术方案和架构设计，
+                                确定UI/UX设计方向，提交方案供您确认。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 步骤3 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0 md:order-1">
+                            <h3 class="text-xl font-semibold mb-2">开发实现</h3>
+                            <p class="text-gray-600">
+                                按照确定的方案进行代码开发，采用敏捷开发模式，
+                                定期提交进度，确保开发质量。
+                            </p>
+                        </div>
+
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center z-10 mb-6 md:mb-0">
+                            <span class="font-bold">3</span>
+                        </div>
+
+                        <div class="md:w-1/2 md:pl-12 md:order-2 hidden md:block"></div>
+                    </div>
+
+                    <!-- 步骤4 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0 md:order-1 hidden md:block"></div>
+
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center z-10 mb-6 md:mb-0">
+                            <span class="font-bold">4</span>
+                        </div>
+
+                        <div class="md:w-1/2 md:pl-12 md:order-2">
+                            <h3 class="text-xl font-semibold mb-2">测试验收</h3>
+                            <p class="text-gray-600">
+                                进行全面的功能测试、性能测试和兼容性测试，
+                                修复发现的问题，直到您满意并确认验收。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 步骤5 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0 md:order-1">
+                            <h3 class="text-xl font-semibold mb-2">部署维护</h3>
+                            <p class="text-gray-600">
+                                协助项目部署上线，提供必要的技术支持和维护服务，
+                                确保系统稳定运行。
+                            </p>
+                        </div>
+
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center z-10 mb-6 md:mb-0">
+                            <span class="font-bold">5</span>
+                        </div>
+
+                        <div class="md:w-1/2 md:pl-12 md:order-2 hidden md:block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 案例展示 -->
+    <section id="cases" class="py-20 bg-light"><div class="container mx-auto px-4"><h2 class="text-3xl font-bold text-center mb-12">代表项目案例</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"><article class="bg-white rounded-xl p-6 shadow-md hover-lift"><div class="text-primary text-3xl mb-4"><i class="fa fa-code"></i></div><h3 class="text-xl font-semibold mb-3">在线刷题系统</h3><p class="text-gray-600 mb-4">题库与职业资格学习</p><a class="text-primary font-medium" href="/cases/exam.html">查看案例 →</a></article><article class="bg-white rounded-xl p-6 shadow-md hover-lift"><div class="text-primary text-3xl mb-4"><i class="fa fa-code"></i></div><h3 class="text-xl font-semibold mb-3">财务 SaaS</h3><p class="text-gray-600 mb-4">企业财税业务协同</p><a class="text-primary font-medium" href="/cases/finance.html">查看案例 →</a></article><article class="bg-white rounded-xl p-6 shadow-md hover-lift"><div class="text-primary text-3xl mb-4"><i class="fa fa-code"></i></div><h3 class="text-xl font-semibold mb-3">门店管理系统</h3><p class="text-gray-600 mb-4">开发中</p><a class="text-primary font-medium" href="/cases/retail.html">查看案例 →</a></article><article class="bg-white rounded-xl p-6 shadow-md hover-lift"><div class="text-primary text-3xl mb-4"><i class="fa fa-code"></i></div><h3 class="text-xl font-semibold mb-3">知行学院</h3><p class="text-gray-600 mb-4">图文课程与开放学习</p><a class="text-primary font-medium" href="/cases/academy.html">查看案例 →</a></article></div></div></section>
+
+    <!-- 客户评价 -->
+    
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-primary/5">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="lg:w-1/2 p-8 md:p-12 lg:p-16 bg-primary text-white">
+                            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6">联系我们</h2>
+                            <p class="mb-10 opacity-90">
+                                无论您有任何项目需求或技术问题，都可以通过以下方式联系我们，
+                                我们会尽快回复您，为您提供专业的技术解决方案。
+                            </p>
+
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fa fa-map-marker"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold mb-1">公司地址</h3>
+                                        <p class="opacity-90">深圳市光明新区华强创意园5A栋908室</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold mb-1">联系电话</h3>
+                                        <p class="opacity-90">+86-13510676374</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold mb-1">电子邮箱</h3>
+                                        <p class="opacity-90">szpengjian@gmail.com</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fa fa-weixin"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold mb-1">微信咨询</h3>
+                                        <p class="opacity-90">pengjianplus</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-12">
+                                <h3 class="font-semibold mb-4">关注我们</h3>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-custom">
+                                        <i class="fa fa-weibo"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-custom">
+                                        <i class="fa fa-weixin"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-custom">
+                                        <i class="fa fa-github"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-custom">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:w-1/2 p-8 md:p-12 lg:p-16">
+                            <h3 class="text-2xl font-semibold mb-6">发送咨询</h3>
+                            <form id="contactForm" class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-gray-700 font-medium mb-2">您的姓名</label>
+                                    <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-custom" placeholder="请输入您的姓名" required>
+                                </div>
+
+                                <div>
+                                    <label for="email" class="block text-gray-700 font-medium mb-2">电子邮箱</label>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-custom" placeholder="请输入您的电子邮箱" required>
+                                </div>
+
+                                <div>
+                                    <label for="phone" class="block text-gray-700 font-medium mb-2">联系电话</label>
+                                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-custom" placeholder="请输入您的联系电话">
+                                </div>
+
+                                <div>
+                                    <label for="service" class="block text-gray-700 font-medium mb-2">您需要的服务</label>
+                                    <select id="service" name="service" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-custom" required>
+                                        <option value="" disabled selected>请选择服务类型</option>
+                                        <option value="app">App开发</option>
+                                        <option value="mini-program">小程序开发</option>
+                                        <option value="website">网站开发</option>
+                                        <option value="iot">物联网开发</option>
+                                        <option value="other">其他服务</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="message" class="block text-gray-700 font-medium mb-2">项目描述</label>
+                                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-custom" placeholder="请简要描述您的项目需求..." required></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-custom">
+                                    提交咨询
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- 页脚 -->
+<footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center space-x-2 mb-6">
+                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                        <i class="fa fa-code text-primary text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold">技术工坊</span>
+                </div>
+                <p class="text-gray-400 mb-6">
+                    专业的技术外包服务提供商，专注于App开发、小程序开发、网站开发和物联网解决方案。
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-6">服务项目</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">App开发</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">小程序开发</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">网站开发</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">物联网开发</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">技术咨询</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-6">技术能力</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">PHP开发</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">Python开发</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">Java开发</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">Go开发</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">前端开发</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-custom">移动应用开发</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-6">联系方式</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fa fa-map-marker text-gray-400 mt-1 mr-3"></i>
+                        <span class="text-gray-400">深圳市光明新区华强创意园5A栋908室</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-phone text-gray-400 mr-3"></i>
+                        <span class="text-gray-400">+86-13510676374</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-envelope text-gray-400 mr-3"></i>
+                        <span class="text-gray-400">szpengjian@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2023 技术工坊. 保留所有权利.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-sm transition-custom">隐私政策</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-sm transition-custom">服务条款</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-sm transition-custom">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- 返回顶部按钮 -->
+<button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+    <i class="fa fa-arrow-up"></i>
+</button>
+
+<!-- JavaScript -->
+<script>
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('py-2', 'shadow');
+            navbar.classList.remove('py-4');
+        } else {
+            navbar.classList.add('py-4');
+            navbar.classList.remove('py-2', 'shadow');
+        }
+    });
+
+    // 移动端菜单切换
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        // 切换图标
+        const icon = menuBtn.querySelector('i');
+        if (icon.classList.contains('fa-bars')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // 关闭移动菜单
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // 返回顶部按钮
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.remove('opacity-0', 'invisible');
+            backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopBtn.classList.add('opacity-0', 'invisible');
+            backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // 使用邮件客户端发送咨询，不模拟提交成功
+const form=document.getElementById('contactForm');if(form){form.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(form);location.href='mailto:szpengjian@gmail.com?subject='+encodeURIComponent('项目咨询')+'&body='+encodeURIComponent(Array.from(data.entries()).map(([k,v])=>k+': '+v).join('\n'));});}
+</script>
+</body>
+</html>
