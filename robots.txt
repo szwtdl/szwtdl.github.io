@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://szwtdl.github.io/sitemap.xml
